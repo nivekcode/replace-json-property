@@ -8,6 +8,7 @@
   },
   "bin": {
     "replace-json-property": "./bin/replace-json-property.js"
+    "rjp": "./bin/replace-json-property.js"
   },
   "repository": {
     "type": "git",

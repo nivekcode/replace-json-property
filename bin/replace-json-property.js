@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const commander = require('commander');
 const jsonfile = require('jsonfile');
 
@@ -17,4 +19,4 @@ commander
 
 const file = jsonfile.readFileSync(path);
 file[property] = value;
-jsonfile.writeFileSync(path, file);
+jsonfile.writeFileSync(path, file, { spaces: 2, EOL: '\r\n' });
