@@ -1,0 +1,32 @@
+{
+  "name": "replace-json-property",
+  "version": "1.0.0",
+  "description": "CLI tool to replace a property in a JSON file",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "replace-json-property": "./bin/replace-json-property.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kreuzerk/replace-json-property.git"
+  },
+  "keywords": [
+    "CLI",
+    "Replace",
+    "JSON",
+    "Buildtool"
+  ],
+  "author": "Kevin Kreuzer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kreuzerk/replace-json-property/issues"
+  },
+  "homepage": "https://github.com/kreuzerk/replace-json-property#readme",
+  "dependencies": {
+    "commander": "^2.19.0",
+    "jsonfile": "^5.0.0"
+  }
+}
