@@ -1,0 +1,16 @@
+dist: trusty
+sudo: required
+language: node_js
+node_js:
+- "8"
+os:
+- linux
+install:
+- npm install
+deploy:
+  provider: npm
+  email: kevin.kreuzer90@icloud.com
+  api_key: ${NPM_KEY}
+  on:
+    tags: true
+  skip_cleanup: true
