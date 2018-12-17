@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "replace-json-property": "./bin/replace-json-property.js"
-    "rjp": "./bin/replace-json-property.js"
+    "replace-json-property": "./replace-json-property.js",
+    "rjp": "./replace-json-property.js"
   },
   "repository": {
     "type": "git",
