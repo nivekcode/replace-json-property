@@ -9,7 +9,7 @@ let value;
 
 commander
     .version('1.0.0')
-    .arguments('<pathArg> <propertyArg> <valueArg></valueArg>')
+    .arguments('<path> <property> <value>')
     .action(function (pathArg, propertyArg, valueArg) {
         path = pathArg;
         property = propertyArg;
