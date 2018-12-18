@@ -2,13 +2,14 @@
 
 const commander = require('commander');
 const jsonfile = require('jsonfile');
+const version = require('./package').version;
 
 let path;
 let property;
 let value;
 
 commander
-    .version('1.0.0')
+    .version(version)
     .arguments('<path> <property> <value>')
     .action(function (pathArg, propertyArg, valueArg) {
         path = pathArg;
