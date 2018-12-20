@@ -1,12 +1,6 @@
 #!/usr/bin/env node
-
 const commander = require('commander');
-const jsonfile = require('jsonfile');
-const version = require('./package').version;
-
-let path;
-let property;
-let value;
+const version = require('../package').version;
 
 commander
     .version(version)
@@ -17,7 +11,3 @@ commander
         value = valueArg;
     })
     .parse(process.argv);
-
-const file = jsonfile.readFileSync(path);
-file[property] = value;
-jsonfile.writeFileSync(path, file, { spaces: 2, EOL: '\r\n' });

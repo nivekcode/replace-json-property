@@ -4,11 +4,11 @@
   "description": "CLI tool to replace a property in a JSON file",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "bin": {
-    "replace-json-property": "./replace-json-property.js",
-    "rjp": "./replace-json-property.js"
+    "replace-json-property": "src/replace-json-property.js",
+    "rjp": "src/replace-json-property.js"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,8 @@
   "dependencies": {
     "commander": "^2.19.0",
     "jsonfile": "^5.0.0"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
   }
 }
