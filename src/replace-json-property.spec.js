@@ -3,34 +3,32 @@ const jsonfile = require('jsonfile');
 
 describe('replace-json-property', () => {
 
-    test('should call readFileSync with the correct path', () => {
-        const givenJSON = {
-            foo: 'bar',
-            bar: 'foo'
-        };
-        jsonfile.setup(givenJSON);
-        const path = './someFolder/someSubFolder';
+    const extractReviver = (jestFunction) => jestFunction.mock.calls[0][1].reviver;
 
+    test('should call readFileSync with the correct patha and an object with a reviver function', () => {
+        const path = './someFolder/someSubFolder';
         sut.replace(path, 'foo', 'bar');
-        expect(jsonfile.readFileSync).toBeCalledWith(path);
+        expect(jsonfile.readFileSync).toBeCalledWith(path, {reviver: expect.any(Function)});
     });
 
-    test('it must replace a single property with the given value', () => {
-        const givenJSON = {
-            foo: 'bar',
-            bar: 'foo'
-        };
-        const expectedJSON = {
-            foo: 'foo',
-            bar: 'foo'
-        };
-        const path = './someFolder/someSubFolder';
-        const options = {spaces: 2, EOL: '\r\n'};
+    test('should replace the value with the new value if the key matches', () => {
+        const expectedValue = 'bar';
+        sut.replace('somePath', 'foo', expectedValue);
 
-        jsonfile.setup(givenJSON);
-        sut.replace(path, 'foo', 'foo');
+        const reviver = extractReviver(jsonfile.readFileSync);
+        const value = reviver('foo', 'someValue');
 
-        expect(jsonfile.writeFileSync).toBeCalledWith(path, expectedJSON, options);
+        expect(value).toBe(expectedValue);
+    });
+
+    test('should not replace the value with the new value if the key matches', () => {
+        const expectedValue = 'bar';
+        sut.replace('somePath', 'foo', 'someValue');
+
+        const reviver = extractReviver(jsonfile.readFileSync);
+        const value = reviver('someProperty', expectedValue);
+
+        expect(value).toBe(expectedValue);
     });
 
 });
