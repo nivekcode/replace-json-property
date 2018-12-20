@@ -7,8 +7,8 @@
     "test": "jest"
   },
   "bin": {
-    "replace-json-property": "src/replace-json-property.js",
-    "rjp": "src/replace-json-property.js"
+    "replace-json-property": "./bin/replace-json-property.bin.js",
+    "rjp": "./bin/replace-json-property.bin.js"
   },
   "repository": {
     "type": "git",

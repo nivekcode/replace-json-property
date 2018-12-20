@@ -11,7 +11,7 @@ describe('replace-json-property', () => {
         jsonfile.setup(givenJSON);
         const path = './someFolder/someSubFolder';
 
-        sut.replaceJSONPropery(path, 'foo', 'bar');
+        sut.replace(path, 'foo', 'bar');
         expect(jsonfile.readFileSync).toBeCalledWith(path);
     });
 
@@ -20,7 +20,7 @@ describe('replace-json-property', () => {
             foo: 'bar',
             bar: 'foo'
         };
-         const expectedJSON = {
+        const expectedJSON = {
             foo: 'foo',
             bar: 'foo'
         };
@@ -28,9 +28,9 @@ describe('replace-json-property', () => {
         const options = {spaces: 2, EOL: '\r\n'};
 
         jsonfile.setup(givenJSON);
-        sut.replaceJSONPropery(path, 'foo', 'foo');
+        sut.replace(path, 'foo', 'foo');
 
         expect(jsonfile.writeFileSync).toBeCalledWith(path, expectedJSON, options);
-    })
+    });
 
 });
