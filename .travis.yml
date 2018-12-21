@@ -10,9 +10,14 @@ install:
 script:
 - npm run report:coverage
 deploy:
-  provider: npm
+- provider: script
+  script: npm run release
+  on:
+    branch: master
+- provider: npm
   email: kevin.kreuzer90@icloud.com
   api_key: ${NPM_KEY}
+  script: npm run release
   on:
     tags: true
   skip_cleanup: true
