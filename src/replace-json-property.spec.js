@@ -2,13 +2,15 @@ const sut = require('./replace-json-property');
 const jsonfile = require('jsonfile');
 
 describe('replace-json-property', () => {
-
-    const extractReviver = (jestFunction) => jestFunction.mock.calls[0][1].reviver;
+    const extractReviver = jestFunction =>
+        jestFunction.mock.calls[0][1].reviver;
 
     test('should call readFileSync with the correct patha and an object with a reviver function', () => {
         const path = './someFolder/someSubFolder';
         sut.replace(path, 'foo', 'bar');
-        expect(jsonfile.readFileSync).toBeCalledWith(path, {reviver: expect.any(Function)});
+        expect(jsonfile.readFileSync).toBeCalledWith(path, {
+            reviver: expect.any(Function)
+        });
     });
 
     test('should replace the value with the new value if the key matches', () => {
@@ -30,5 +32,4 @@ describe('replace-json-property', () => {
 
         expect(value).toBe(expectedValue);
     });
-
 });
