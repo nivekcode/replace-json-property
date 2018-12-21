@@ -5,37 +5,58 @@ You can use this via the following command:
 ```
 replace-json-property pathToFile property value
 ```
-You can always run the help command to see how the signature looks
-```
-replace-json-property -h
-```
-or
 
-```
-replace-json-property --help
-```
-To get the current version use the --verion or -v command.
+This command replaces all occurences of the matching property. It also replaces
+occurences in nested objects or objects in arrays.
 
-## Example
-Let's say we have the following JSON called test.json:
-```
-{
-    foo: 'bar'
-}
-```
-To replace foo with 'test' we can simply run the following command
+The following command would replace all values of the `foo` property with 'test' inside the `test.json`.
 ```
 replace-json-property ./test.json foo test,
 ```
-this results in the following JSON:
+Executing the command above on the given JSON
 ```
 {
-    foo: 'test'
+    foo: 'bar',
+    a: {
+        b: 1,
+        foo: 'bar',
+        c: [
+            {d: 1, foo: 'bar'},
+            {d: 2, foo: 'bar'},
+            {d: 3, foo: 'bar'},
+        ]
+    }
 }
 ```
+results in:
 
+```
+{
+    foo: 'test',
+    a: {
+        b: 1,
+        foo: 'test',
+        c: [
+            {d: 1, foo: 'test'},
+            {d: 2, foo: 'test'},
+            {d: 3, foo: 'test'},
+        ]
+    }
+}
+```
 ## Short form
 All commands explained above can also be run with the shortcut version `rjp`.
 ```
 rjp ./test.json foo test,
 ```
+## Help command
+You can always run the help command to see how the signature looks
+```
+replace-json-property -h
+```
+or
+```
+replace-json-property --help
+```
+To get the current version use the --verion or -v command.
+
