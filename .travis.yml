@@ -14,10 +14,10 @@ deploy:
   script: npm run release
   on:
     branch: master
+  skip_cleanup: true
 - provider: npm
   email: kevin.kreuzer90@icloud.com
   api_key: ${NPM_KEY}
-  script: npm run release
   on:
     tags: true
   skip_cleanup: true
