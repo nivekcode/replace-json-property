@@ -14,10 +14,20 @@
       "git add"
     ]
   },
+  "jest": {
+    "collectCoverageFrom": [
+      "src/**/*js",
+      "!**/node_modules/**",
+      "!bin/**"
+    ],
+    "coverageDirectory": "coverage"
+  },
   "scripts": {
     "format:check": "prettier --list-different '{src,__mocks__,bin}/**/*.js'",
     "format:write": "prettier --write '{src,__mocks__,bin}/**/*.js'",
-    "test": "jest"
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "report:coverage": "npm run test:coverage && codecov"
   },
   "bin": {
     "replace-json-property": "./bin/replace-json-property.bin.js",
@@ -44,6 +54,7 @@
     "jsonfile": "^5.0.0"
   },
   "devDependencies": {
+    "codecov": "^3.1.0",
     "husky": "^1.2.1",
     "jest": "^23.6.0",
     "lint-staged": "^8.1.0",
