@@ -1,3 +1,5 @@
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
 # replace-json-property
 This module allows you to replace a specific property in a JSON.
 You can use this via the following command:
@@ -58,5 +60,5 @@ or
 ```
 replace-json-property --help
 ```
-To get the current version use the --verion or -v command.
+To get the current version use the --version or -v command.
 
