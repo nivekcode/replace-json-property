@@ -2,6 +2,9 @@ const sut = require('./replace-json-property');
 const jsonfile = require('jsonfile');
 
 describe('replace-json-property', () => {
+    console.log = jest.fn();
+    console.error = jest.fn();
+
     const extractReviver = jestFunction =>
         jestFunction.mock.calls[0][1].reviver;
 
@@ -31,5 +34,17 @@ describe('replace-json-property', () => {
         const value = reviver('someProperty', expectedValue);
 
         expect(value).toBe(expectedValue);
+    });
+
+    test('should log a succcess message if everything was successfull', () => {
+        sut.replace('somePath', 'foo', 'bar');
+        expect(console.log).toHaveBeenCalled();
+    });
+
+    test('should log an error message if something went wrong', () => {
+        const throwError = true;
+        jsonfile.setup({}, throwError);
+        sut.replace('somepath', 'foo', 'bar');
+        expect(console.error).toHaveBeenCalled();
     });
 });
