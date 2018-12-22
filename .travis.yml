@@ -3,16 +3,23 @@ sudo: required
 language: node_js
 node_js:
 - "8"
+
 os:
 - linux
-install:
-- npm install
-script:
-- npm run report:coverage
-deploy:
-- provider: npm
-  email: kevin.kreuzer90@icloud.com
-  api_key: ${NPM_KEY}
-  on:
-    tags: true
-  skip_cleanup: true
+
+jobs:
+  include:
+  - stage: install
+    script: npm install
+    skip_cleanup: true
+  - stage: test
+    script: npm run report:coverage
+    skip_cleanup: true
+  - stage: release
+    node_js: lts/*
+    deploy:
+      provider: script
+      skip_cleanup: true
+      script:
+      - npx semantic-release
+    if: branch = master
