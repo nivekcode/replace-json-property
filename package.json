@@ -1,6 +1,6 @@
 {
   "name": "replace-json-property",
-  "version": "1.1.0",
+  "version": "0.0.0-development",
   "description": "CLI tool to replace a property in a JSON file",
   "main": "index.js",
   "husky": {
@@ -28,7 +28,7 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "report:coverage": "npm run test:coverage && codecov",
-    "release": "standard-version && git push --follow-tags origin master"
+    "semantic-release": "semantic-release"
   },
   "bin": {
     "replace-json-property": "./bin/replace-json-property.bin.js",
@@ -36,7 +36,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kreuzerk/replace-json-property.git"
+    "url": "https://github.com/kreuzerk/replace-json-property.git"
   },
   "keywords": [
     "CLI",
@@ -60,6 +60,6 @@
     "jest": "^23.6.0",
     "lint-staged": "^8.1.0",
     "prettier": "^1.15.3",
-    "standard-version": "^4.4.0"
+    "semantic-release": "^15.13.1"
   }
 }
