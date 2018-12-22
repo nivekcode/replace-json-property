@@ -51,6 +51,7 @@
   },
   "homepage": "https://github.com/kreuzerk/replace-json-property#readme",
   "dependencies": {
+    "chalk": "^2.4.1",
     "commander": "^2.19.0",
     "jsonfile": "^5.0.0"
   },
