@@ -1,9 +1,11 @@
-const sut = require('./replace-json-property');
 const jsonfile = require('jsonfile');
 
+const sut = require('./replace-json-property');
+const log = require('./log');
+
 describe('replace-json-property', () => {
-    console.log = jest.fn();
-    console.error = jest.fn();
+    log.success = jest.fn();
+    log.error = jest.fn();
 
     const extractReviver = jestFunction =>
         jestFunction.mock.calls[0][1].reviver;
@@ -18,7 +20,7 @@ describe('replace-json-property', () => {
 
     test('should replace the value with the new value if the key matches', () => {
         const expectedValue = 'bar';
-        sut.replace('somePath', 'foo', expectedValue);
+        sut.replace('somePath', 'foo', expectedValue, {});
 
         const reviver = extractReviver(jsonfile.readFileSync);
         const value = reviver('foo', 'someValue');
@@ -28,7 +30,7 @@ describe('replace-json-property', () => {
 
     test('should not replace the value with the new value if the key matches', () => {
         const expectedValue = 'bar';
-        sut.replace('somePath', 'foo', 'someValue');
+        sut.replace('somePath', 'foo', 'someValue', {});
 
         const reviver = extractReviver(jsonfile.readFileSync);
         const value = reviver('someProperty', expectedValue);
@@ -37,14 +39,14 @@ describe('replace-json-property', () => {
     });
 
     test('should log a succcess message if everything was successfull', () => {
-        sut.replace('somePath', 'foo', 'bar');
-        expect(console.log).toHaveBeenCalled();
+        sut.replace('somePath', 'foo', 'bar', {});
+        expect(log.success).toHaveBeenCalled();
     });
 
     test('should log an error message if something went wrong', () => {
         const throwError = true;
         jsonfile.setup({}, throwError);
-        sut.replace('somepath', 'foo', 'bar');
-        expect(console.error).toHaveBeenCalled();
+        sut.replace('somepath', 'foo', 'bar', {});
+        expect(log.error).toHaveBeenCalled();
     });
 });
