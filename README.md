@@ -52,6 +52,16 @@ All commands explained above can also be run with the shortcut version `rjp`.
 ```
 rjp ./test.json foo test,
 ```
+
+## Options
+The following flags allow you to configure how the resulting file is written.
+
+| Option | Description | Default |
+| ------------- | ------------- |-----|
+| -s or --spaces  | Add the spaces the file should be written with, for example (2, 4) | 2
+| -e or --eol  | Add the line ending the file should be written with, for example "\n" | "\r\n"
+
+
 ## Help command
 You can always run the help command to see how the signature looks
 ```
