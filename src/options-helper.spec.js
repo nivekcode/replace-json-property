@@ -1,4 +1,4 @@
-const sut = require('./options');
+const sut = require('./options-helper');
 
 describe('options', () => {
     it('should apply the provided space option', () => {
