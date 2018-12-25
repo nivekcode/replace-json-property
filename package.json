@@ -18,7 +18,8 @@
     "collectCoverageFrom": [
       "src/**/*js",
       "!**/node_modules/**",
-      "!bin/**"
+      "!bin/**",
+      "!src/log.js"
     ],
     "coverageDirectory": "coverage"
   },
