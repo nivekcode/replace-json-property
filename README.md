@@ -1,7 +1,8 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![codecov](https://codecov.io/gh/kreuzerk/replace-json-property/branch/master/graph/badge.svg)](https://codecov.io/gh/kreuzerk/replace-json-property)
 
-# replace-json-property
+![Logo](https://raw.githubusercontent.com/kreuzerk/replace-json-property/master/assets/logo.png)
+
 This module allows you to replace a specific property in a JSON.
 You can use this via the following command:
 
