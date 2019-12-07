@@ -1,15 +1,15 @@
 const log = require('./log');
 const DEFAULT_SPACE = 2;
-const DEFAULT_EOL = '\r\n';
+const DEFAULT_EOL = '\n';
 
-const extractOptions = (space, endOfLine) => {
+const extractOptions = (spaces, endOfLine) => {
     return {
-        space: space || applyDefaultSpace(),
+        spaces: spaces ? parseInt(spaces) : applyDefaultSpaces(),
         endOfLine: endOfLine || applyDefaultEOL()
     };
 };
 
-const applyDefaultSpace = () => {
+const applyDefaultSpaces = () => {
     log.info(
         'No space provided, file will be writen with 2 spaces which is the default'
     );

@@ -1,5 +1,6 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![codecov](https://codecov.io/gh/kreuzerk/replace-json-property/branch/master/graph/badge.svg)](https://codecov.io/gh/kreuzerk/replace-json-property)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 
 ![Logo](https://raw.githubusercontent.com/kreuzerk/replace-json-property/master/assets/logo.png)
 
@@ -60,7 +61,7 @@ The following flags allow you to configure how the resulting file is written.
 | Option | Description | Default |
 | ------------- | ------------- |-----|
 | -s or --spaces  | Add the spaces the file should be written with, for example (2, 4) | 2
-| -e or --eol  | Add the line ending the file should be written with, for example "\n" | "\r\n"
+| -e or --eol  | Add the line ending the file should be written with, for example "\r\n" | "\n"
 
 
 ## Help command

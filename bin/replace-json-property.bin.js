@@ -17,7 +17,7 @@ commander
     )
     .action(function(path, property, value) {
         const options = optionsHelper.extractOptions(
-            commander.space,
+            commander.spaces,
             commander.eol
         );
         replaceJsonProperty.replace(path, property, value, options);
