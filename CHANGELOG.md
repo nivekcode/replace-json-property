@@ -1,3 +1,10 @@
+## [1.4.3](https://github.com/kreuzerk/replace-json-property/compare/v1.4.2...v1.4.3) (2019-12-16)
+
+
+### Bug Fixes
+
+* **docs:** change logo ([fd7e979](https://github.com/kreuzerk/replace-json-property/commit/fd7e979))
+
 ## [1.4.2](https://github.com/kreuzerk/replace-json-property/compare/v1.4.1...v1.4.2) (2019-12-07)
 
 

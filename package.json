@@ -1,6 +1,6 @@
 {
   "name": "replace-json-property",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "description": "CLI tool to replace a property in a JSON file",
   "main": "index.js",
   "husky": {
