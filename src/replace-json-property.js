@@ -18,7 +18,6 @@ const replace = (path, property, newValue, options = {}) => {
             `Property: "${property}" in file: ${path} successfully overwritten with "${newValue}"`
         );
     } catch (error) {
-        console.log('Da');
         log.error(error);
     }
 };
