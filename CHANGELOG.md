@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/kreuzerk/replace-json-property/compare/v1.5.0...v1.5.1) (2020-09-15)
+
+
+### Bug Fixes
+
+* **docs:** copy README and assets on build ([9261f4f](https://github.com/kreuzerk/replace-json-property/commit/9261f4f348a1e4f033d6a516352995fe479a0c64))
+
 # [1.5.0](https://github.com/kreuzerk/replace-json-property/compare/v1.4.4...v1.5.0) (2020-09-15)
 
 
