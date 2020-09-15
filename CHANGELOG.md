@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/kreuzerk/replace-json-property/compare/v1.4.4...v1.5.0) (2020-09-15)
+
+
+### Features
+
+* **replace:** allow usage in code ([106b3ba](https://github.com/kreuzerk/replace-json-property/commit/106b3baeb945dd8d0127c12023b60eccfedf75c1))
+
 ## [1.4.4](https://github.com/kreuzerk/replace-json-property/compare/v1.4.3...v1.4.4) (2020-09-15)
 
 
