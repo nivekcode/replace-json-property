@@ -42,7 +42,7 @@
     "copy:assets": "cpx README.md ./dist",
     "format:check": "prettier --list-different '{src,__mocks__,bin}/**/*.js'",
     "format:write": "prettier --write '{src,__mocks__,bin}/**/*.js'",
-    "commit": "npx git-cz",
+    "commit": "git-cz",
     "test": "jest",
     "test:coverage": "jest --coverage",
     "report:coverage": "npm run test:coverage && codecov",
