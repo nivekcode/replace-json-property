@@ -1,7 +1,13 @@
 const jsonfile = require('jsonfile');
 const log = require('./log');
 
-const replace = (path, property, newValue, options) => {
+const DEFAULT_OPTIONS = {
+    spaces: 2,
+    endOfLine: '\n'
+};
+
+const replace = (path, property, newValue, options = {}) => {
+    options = { ...DEFAULT_OPTIONS, ...options };
     try {
         const file = readFile(path, property, newValue);
         jsonfile.writeFileSync(path, file, {
@@ -12,6 +18,7 @@ const replace = (path, property, newValue, options) => {
             `Property: "${property}" in file: ${path} successfully overwritten with "${newValue}"`
         );
     } catch (error) {
+        console.log('Da');
         log.error(error);
     }
 };
