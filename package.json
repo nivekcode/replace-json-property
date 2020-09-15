@@ -39,6 +39,7 @@
     "copy:bin": "cpx './bin/*.*' ./dist/bin",
     "copy:src": "cpx './src/**/!(*.spec).js' ./dist/src",
     "copy:package-json": "cpx package.json ./dist",
+    "copy:assets": "cpx README.md ./dist && cpx assets/* ./dist/assets",
     "format:check": "prettier --list-different '{src,__mocks__,bin}/**/*.js'",
     "format:write": "prettier --write '{src,__mocks__,bin}/**/*.js'",
     "commit": "npx git-cz",
