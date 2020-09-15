@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/kreuzerk/replace-json-property/compare/v1.4.3...v1.4.4) (2020-09-15)
+
+
+### Bug Fixes
+
+* **deps:** add chalk as missing dependency ([e4e2ec6](https://github.com/kreuzerk/replace-json-property/commit/e4e2ec6f94ff8d2c0196976ef3417ba09d7cc506))
+
 ## [1.4.3](https://github.com/kreuzerk/replace-json-property/compare/v1.4.2...v1.4.3) (2019-12-16)
 
 
