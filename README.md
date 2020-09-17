@@ -5,6 +5,9 @@
 ![Logo](https://raw.githubusercontent.com/kreuzerk/replace-json-property/master/assets/logo.png)
 
 This module allows you to replace a specific property in a JSON.
+
+## Comand line usage
+
 You can use this via the following command:
 
 ```
@@ -19,7 +22,7 @@ The following command would replace all values of the `foo` property with 'test'
 replace-json-property ./test.json foo test,
 ```
 Executing the command above on the given JSON
-```
+```json
 {
     foo: 'bar',
     a: {
@@ -35,7 +38,7 @@ Executing the command above on the given JSON
 ```
 results in:
 
-```
+```json
 {
     foo: 'test',
     a: {
@@ -49,13 +52,39 @@ results in:
     }
 }
 ```
-## Short form
+### Short form
+
 All commands explained above can also be run with the shortcut version `rjp`.
 ```
 rjp ./test.json foo test,
 ```
 
+
+
+## Usage from code
+
+You can also use the replace function in your JavaScript code.
+
+1. Using module imports
+
+   ```javascript
+   import {replace} from 'replace-json-property';
+   
+   replace('./environment/test.json', 'foo', 'new value');
+   ```
+
+2. Using commonjs
+
+   ```javascript
+   const replaceJSONProperty = require('replace-json-property');
+   
+   replaceJSONProperty.replace('./environment/test.json', 'foo', 'new value');
+   ```
+
+   
+
 ## Options
+
 The following flags allow you to configure how the resulting file is written.
 
 | Option | Description | Default |
