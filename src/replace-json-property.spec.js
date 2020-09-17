@@ -7,46 +7,104 @@ describe('replace-json-property', () => {
     log.success = jest.fn();
     log.error = jest.fn();
 
-    const extractReviver = jestFunction =>
-        jestFunction.mock.calls[0][1].reviver;
+    describe('Replace', () => {
+        const extractReviver = jestFunction =>
+            jestFunction.mock.calls[0][1].reviver;
 
-    test('should call readFileSync with the correct patha and an object with a reviver function', () => {
-        const path = './someFolder/someSubFolder';
-        sut.replace(path, 'foo', 'bar');
-        expect(jsonfile.readFileSync).toBeCalledWith(path, {
-            reviver: expect.any(Function)
+        test('should call readFileSync with the correct patha and an object with a reviver function', () => {
+            const path = './someFolder/someSubFolder';
+            sut.replace(path, 'foo', 'bar');
+            expect(jsonfile.readFileSync).toBeCalledWith(path, {
+                reviver: expect.any(Function)
+            });
+        });
+
+        test('should replace the value with the new value if the key matches', () => {
+            const expectedValue = 'bar';
+            sut.replace('somePath', 'foo', expectedValue, {});
+
+            const reviver = extractReviver(jsonfile.readFileSync);
+            const value = reviver('foo', 'someValue');
+
+            expect(value).toBe(expectedValue);
+        });
+
+        test('should not replace the value with the new value if the key matches', () => {
+            const expectedValue = 'bar';
+            sut.replace('somePath', 'foo', 'someValue', {});
+
+            const reviver = extractReviver(jsonfile.readFileSync);
+            const value = reviver('someProperty', expectedValue);
+
+            expect(value).toBe(expectedValue);
+        });
+
+        test('should log a succcess message if everything was successfull', () => {
+            sut.replace('somePath', 'foo', 'bar', {});
+            expect(log.success).toHaveBeenCalled();
+        });
+
+        test('should log an error message if something went wrong', () => {
+            const throwError = true;
+            jsonfile.setup({}, throwError);
+            sut.replace('somepath', 'foo', 'bar', {});
+            expect(log.error).toHaveBeenCalled();
         });
     });
 
-    test('should replace the value with the new value if the key matches', () => {
-        const expectedValue = 'bar';
-        sut.replace('somePath', 'foo', expectedValue, {});
+    describe('options', () => {
+        beforeEach(() => {
+            jest.resetAllMocks();
+        });
 
-        const reviver = extractReviver(jsonfile.readFileSync);
-        const value = reviver('foo', 'someValue');
+        test('should apply the provided space option and add the default EOL', () => {
+            const path = './foo/test.json';
+            const property = 'foo';
+            const newValue = 'bar';
+            const options = { spaces: 4 };
 
-        expect(value).toBe(expectedValue);
-    });
+            sut.replace(path, property, newValue, options);
+            expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
+                expect.anything(),
+                undefined,
+                {
+                    spaces: 4,
+                    EOL: '\n'
+                }
+            );
+        });
 
-    test('should not replace the value with the new value if the key matches', () => {
-        const expectedValue = 'bar';
-        sut.replace('somePath', 'foo', 'someValue', {});
+        test('should apply the default space and EOL options', () => {
+            const path = './foo/test.json';
+            const property = 'foo';
+            const newValue = 'bar';
 
-        const reviver = extractReviver(jsonfile.readFileSync);
-        const value = reviver('someProperty', expectedValue);
+            sut.replace(path, property, newValue, null);
+            expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
+                expect.anything(),
+                undefined,
+                {
+                    spaces: 2,
+                    EOL: '\n'
+                }
+            );
+        });
 
-        expect(value).toBe(expectedValue);
-    });
+        test('should apply the provided EOL option and use the default space option', () => {
+            const path = './foo/test.json';
+            const property = 'foo';
+            const newValue = 'bar';
+            const options = { endOfLine: '\n\r' };
 
-    test('should log a succcess message if everything was successfull', () => {
-        sut.replace('somePath', 'foo', 'bar', {});
-        expect(log.success).toHaveBeenCalled();
-    });
-
-    test('should log an error message if something went wrong', () => {
-        const throwError = true;
-        jsonfile.setup({}, throwError);
-        sut.replace('somepath', 'foo', 'bar', {});
-        expect(log.error).toHaveBeenCalled();
+            sut.replace(path, property, newValue, options);
+            expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
+                expect.anything(),
+                undefined,
+                {
+                    spaces: 2,
+                    EOL: '\n\r'
+                }
+            );
+        });
     });
 });
