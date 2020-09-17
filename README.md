@@ -24,14 +24,14 @@ replace-json-property ./test.json foo test,
 Executing the command above on the given JSON
 ```json
 {
-    foo: 'bar',
-    a: {
-        b: 1,
-        foo: 'bar',
-        c: [
-            {d: 1, foo: 'bar'},
-            {d: 2, foo: 'bar'},
-            {d: 3, foo: 'bar'},
+    "foo": "bar",
+    "a": {
+        "b": 1,
+        "foo": "bar",
+        "c": [
+            {"d": 1, "foo": "bar"},
+            {"d": 2, "foo": "bar"},
+            {"d": 3, "foo": "bar"},
         ]
     }
 }
@@ -40,14 +40,14 @@ results in:
 
 ```json
 {
-    foo: 'test',
-    a: {
-        b: 1,
-        foo: 'test',
-        c: [
-            {d: 1, foo: 'test'},
-            {d: 2, foo: 'test'},
-            {d: 3, foo: 'test'},
+    "foo": "test",
+   	"a": {
+        "b": 1,
+        "foo": "test",
+        "c": [
+            {"d": 1, "foo": "test"},
+            {"d": 2, "foo": "test"},
+            {"d": 3, "foo": "test"},
         ]
     }
 }
