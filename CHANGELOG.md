@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/kreuzerk/replace-json-property/compare/v1.6.0...v1.6.1) (2020-09-30)
+
+
+### Bug Fixes
+
+* 🐛 remove wrong import and wrong method call ([8e9d250](https://github.com/kreuzerk/replace-json-property/commit/8e9d25078b065bc4c6e204b9c66243d608f26323)), closes [#33](https://github.com/kreuzerk/replace-json-property/issues/33)
+
 # [1.6.0](https://github.com/kreuzerk/replace-json-property/compare/v1.5.1...v1.6.0) (2020-09-17)
 
 
