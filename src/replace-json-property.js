@@ -7,7 +7,10 @@ const DEFAULT_OPTIONS = {
 };
 
 const replace = (path, property, newValue, options = {}) => {
-    options = { ...options, ...DEFAULT_OPTIONS };
+    options = {
+        spaces: options.spaces || DEFAULT_OPTIONS.spaces,
+        EOL: options.EOL || DEFAULT_OPTIONS.EOL
+    };
     try {
         const file = readFile(path, property, newValue);
         jsonfile.writeFileSync(path, file, options);
