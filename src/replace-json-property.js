@@ -3,17 +3,17 @@ const log = require('./log');
 
 const DEFAULT_OPTIONS = {
     spaces: 2,
-    endOfLine: '\n'
+    EOL: '\n'
 };
 
 const replace = (path, property, newValue, options = {}) => {
-    options = { ...DEFAULT_OPTIONS, ...options };
+    options = {
+        spaces: options.spaces || DEFAULT_OPTIONS.spaces,
+        EOL: options.EOL || DEFAULT_OPTIONS.EOL
+    };
     try {
         const file = readFile(path, property, newValue);
-        jsonfile.writeFileSync(path, file, {
-            spaces: options.spaces,
-            EOL: options.endOfLine
-        });
+        jsonfile.writeFileSync(path, file, options);
         log.success(
             `Property: "${property}" in file: ${path} successfully overwritten with "${newValue}"`
         );
