@@ -1,3 +1,12 @@
+## [1.6.2](https://github.com/kreuzerk/replace-json-property/compare/v1.6.1...v1.6.2) (2020-11-16)
+
+
+### Bug Fixes
+
+* 🐛 apply correct default options ([0b29600](https://github.com/kreuzerk/replace-json-property/commit/0b29600bbc4c98c19526e4afc7bb1daaffe2b723))
+* 🐛 assign correct default options ([b222d53](https://github.com/kreuzerk/replace-json-property/commit/b222d5309eab191257b9d6f33515954b77c4476b))
+* 🐛 handle null value for options ([d1c22e1](https://github.com/kreuzerk/replace-json-property/commit/d1c22e1d24b34e9bf7a7cffb267de196e2815e14))
+
 ## [1.6.1](https://github.com/kreuzerk/replace-json-property/compare/v1.6.0...v1.6.1) (2020-09-30)
 
 
