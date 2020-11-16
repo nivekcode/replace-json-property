@@ -94,7 +94,7 @@ describe('replace-json-property', () => {
             const path = './foo/test.json';
             const property = 'foo';
             const newValue = 'bar';
-            const options = { endOfLine: '\n\r' };
+            const options = { EOL: '\n\r' };
 
             sut.replace(path, property, newValue, options);
             expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
