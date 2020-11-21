@@ -6,9 +6,11 @@ const DEFAULT_OPTIONS = {
     EOL: '\n'
 };
 
-const replace = (path, property, newValue, options) => {
+const replace = (path, property, newValue, options = {}) => {
     options = {
-        spaces: (options && options.spaces) || DEFAULT_OPTIONS.spaces,
+        spaces: options.spaces
+            ? parseInt(options.spaces)
+            : DEFAULT_OPTIONS.spaces,
         EOL: (options && options.EOL) || DEFAULT_OPTIONS.EOL
     };
     try {
