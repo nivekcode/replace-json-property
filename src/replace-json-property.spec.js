@@ -79,7 +79,7 @@ describe('replace-json-property', () => {
             const property = 'foo';
             const newValue = 'bar';
 
-            sut.replace(path, property, newValue, null);
+            sut.replace(path, property, newValue);
             expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
                 expect.anything(),
                 undefined,

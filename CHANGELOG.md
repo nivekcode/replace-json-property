@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/kreuzerk/replace-json-property/compare/v1.6.2...v1.6.3) (2020-11-21)
+
+
+### Bug Fixes
+
+* 🐛 correctly handle passed spaces ([2ebe3ed](https://github.com/kreuzerk/replace-json-property/commit/2ebe3ed79cae79f960166ab185eae662a3dbfc0d))
+
 ## [1.6.2](https://github.com/kreuzerk/replace-json-property/compare/v1.6.1...v1.6.2) (2020-11-16)
 
 

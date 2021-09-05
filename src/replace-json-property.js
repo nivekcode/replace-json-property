@@ -7,9 +7,11 @@ const DEFAULT_OPTIONS = {
     SILENT: false
 };
 
-const replace = (path, property, newValue, options) => {
+const replace = (path, property, newValue, options = {}) => {
     options = {
-        spaces: (options && options.spaces) || DEFAULT_OPTIONS.spaces,
+        spaces: options.spaces
+            ? parseInt(options.spaces)
+            : DEFAULT_OPTIONS.spaces,
         EOL: (options && options.EOL) || DEFAULT_OPTIONS.EOL,
         silent: (options && options.silent) || DEFAULT_OPTIONS.SILENT
     };
