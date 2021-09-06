@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/kreuzerk/replace-json-property/compare/v1.7.0...v1.7.1) (2021-09-06)
+
+
+### Bug Fixes
+
+* 🐛 (silent) document silent flag ([4e59fdb](https://github.com/kreuzerk/replace-json-property/commit/4e59fdb4d4bf012a08221cd7aabd924aa3d6329c))
+
 # [1.7.0](https://github.com/kreuzerk/replace-json-property/compare/v1.6.3...v1.7.0) (2021-09-06)
 
 
