@@ -3,7 +3,8 @@ const log = require('./log');
 
 const DEFAULT_OPTIONS = {
     spaces: 2,
-    EOL: '\n'
+    EOL: '\n',
+    SILENT: false
 };
 
 const replace = (path, property, newValue, options = {}) => {
@@ -11,14 +12,17 @@ const replace = (path, property, newValue, options = {}) => {
         spaces: options.spaces
             ? parseInt(options.spaces)
             : DEFAULT_OPTIONS.spaces,
-        EOL: (options && options.EOL) || DEFAULT_OPTIONS.EOL
+        EOL: (options && options.EOL) || DEFAULT_OPTIONS.EOL,
+        silent: (options && options.silent) || DEFAULT_OPTIONS.SILENT
     };
     try {
         const file = readFile(path, property, newValue);
         jsonfile.writeFileSync(path, file, options);
-        log.success(
-            `Property: "${property}" in file: ${path} successfully overwritten with "${newValue}"`
-        );
+        if (!options.silent) {
+            log.success(
+                `Property: "${property}" in file: ${path} successfully overwritten with "${newValue}"`
+            );
+        }
     } catch (error) {
         log.error(error);
     }

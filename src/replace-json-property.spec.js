@@ -69,12 +69,13 @@ describe('replace-json-property', () => {
                 undefined,
                 {
                     spaces: 4,
-                    EOL: '\n'
+                    EOL: '\n',
+                    silent: false
                 }
             );
         });
 
-        test('should apply the default space and EOL options', () => {
+        test('should apply the default space, EOL and silent options', () => {
             const path = './foo/test.json';
             const property = 'foo';
             const newValue = 'bar';
@@ -85,12 +86,13 @@ describe('replace-json-property', () => {
                 undefined,
                 {
                     spaces: 2,
-                    EOL: '\n'
+                    EOL: '\n',
+                    silent: false
                 }
             );
         });
 
-        test('should apply the provided EOL option and use the default space option', () => {
+        test('should apply the provided EOL option and use the default space and silent option', () => {
             const path = './foo/test.json';
             const property = 'foo';
             const newValue = 'bar';
@@ -102,7 +104,26 @@ describe('replace-json-property', () => {
                 undefined,
                 {
                     spaces: 2,
-                    EOL: '\n\r'
+                    EOL: '\n\r',
+                    silent: false
+                }
+            );
+        });
+
+        test('should apply the provided silent option and use the default space and EOL option', () => {
+            const path = './foo/test.json';
+            const property = 'foo';
+            const newValue = 'bar';
+            const options = { silent: true };
+
+            sut.replace(path, property, newValue, options);
+            expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
+                expect.anything(),
+                undefined,
+                {
+                    spaces: 2,
+                    EOL: '\n',
+                    silent: true
                 }
             );
         });
