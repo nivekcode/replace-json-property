@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/kreuzerk/replace-json-property/compare/v1.6.3...v1.7.0) (2021-09-06)
+
+
+### Features
+
+* **options:** add silent option ([66b2574](https://github.com/kreuzerk/replace-json-property/commit/66b2574ac1b89c587a4a68891c210e26afc07e05))
+
 ## [1.6.3](https://github.com/kreuzerk/replace-json-property/compare/v1.6.2...v1.6.3) (2020-11-21)
 
 
