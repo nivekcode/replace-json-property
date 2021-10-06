@@ -83,7 +83,7 @@ You can also use the replace function in your JavaScript code.
 
    ```javascript
    import {replace} from 'replace-json-property';
-   
+
    replace('./environment/test.json', 'foo', 'new value');
    ```
 
@@ -91,11 +91,11 @@ You can also use the replace function in your JavaScript code.
 
    ```javascript
    const replaceJSONProperty = require('replace-json-property');
-   
+
    replaceJSONProperty.replace('./environment/test.json', 'foo', 'new value');
    ```
 
-   
+
 
 ## Options
 
@@ -106,6 +106,7 @@ The following flags allow you to configure how the resulting file is written.
 | -s or --spaces  | Add the spaces the file should be written with, for example (2, 4) | 2|
 | -e or --eol  | Add the line ending the file should be written with, for example "\r\n" | "\n"|
 | --silent | Silent mode. Executes without log messages | False |
+| --limit | Limit the number of replacements | 0 (unlimited) |
 
 
 
