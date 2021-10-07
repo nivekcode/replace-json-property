@@ -73,8 +73,6 @@ All commands explained above can also be run with the shortcut version `rjp`.
 rjp ./test.json foo test,
 ```
 
-
-
 ## Usage from code
 
 You can also use the replace function in your JavaScript code.
@@ -95,8 +93,6 @@ You can also use the replace function in your JavaScript code.
    replaceJSONProperty.replace('./environment/test.json', 'foo', 'new value');
    ```
 
-
-
 ## Options
 
 The following flags allow you to configure how the resulting file is written.
@@ -107,8 +103,6 @@ The following flags allow you to configure how the resulting file is written.
 | -e or --eol  | Add the line ending the file should be written with, for example "\r\n" | "\n"|
 | --silent | Silent mode. Executes without log messages | False |
 | --limit | Limit the number of replacements | 0 (unlimited) |
-
-
 
 ## Help command
 
