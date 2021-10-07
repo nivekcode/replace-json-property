@@ -4,14 +4,17 @@ const sut = require('./replace-json-property');
 const log = require('./log');
 
 describe('replace-json-property', () => {
-    log.success = jest.fn();
-    log.error = jest.fn();
+    beforeEach(() => {
+        jsonfile.setup({}, false);
+        log.success = jest.fn();
+        log.error = jest.fn();
+    });
 
     describe('Replace', () => {
         const extractReviver = jestFunction =>
             jestFunction.mock.calls[0][1].reviver;
 
-        test('should call readFileSync with the correct patha and an object with a reviver function', () => {
+        test('should call readFileSync with the correct path and an object with a reviver function', () => {
             const path = './someFolder/someSubFolder';
             sut.replace(path, 'foo', 'bar');
             expect(jsonfile.readFileSync).toBeCalledWith(path, {
@@ -29,7 +32,7 @@ describe('replace-json-property', () => {
             expect(value).toBe(expectedValue);
         });
 
-        test('should not replace the value with the new value if the key matches', () => {
+        test('should not replace the value with the new value if the key does not match', () => {
             const expectedValue = 'bar';
             sut.replace('somePath', 'foo', 'someValue', {});
 
@@ -39,7 +42,7 @@ describe('replace-json-property', () => {
             expect(value).toBe(expectedValue);
         });
 
-        test('should log a succcess message if everything was successfull', () => {
+        test('should log a succcess message if everything was successful', () => {
             sut.replace('somePath', 'foo', 'bar', {});
             expect(log.success).toHaveBeenCalled();
         });
@@ -70,7 +73,8 @@ describe('replace-json-property', () => {
                 {
                     spaces: 4,
                     EOL: '\n',
-                    silent: false
+                    silent: false,
+                    limit: 0
                 }
             );
         });
@@ -87,12 +91,13 @@ describe('replace-json-property', () => {
                 {
                     spaces: 2,
                     EOL: '\n',
-                    silent: false
+                    silent: false,
+                    limit: 0
                 }
             );
         });
 
-        test('should apply the provided EOL option and use the default space and silent option', () => {
+        test('should apply the provided EOL option and use the default space, limit, and silent option', () => {
             const path = './foo/test.json';
             const property = 'foo';
             const newValue = 'bar';
@@ -105,12 +110,13 @@ describe('replace-json-property', () => {
                 {
                     spaces: 2,
                     EOL: '\n\r',
-                    silent: false
+                    silent: false,
+                    limit: 0
                 }
             );
         });
 
-        test('should apply the provided silent option and use the default space and EOL option', () => {
+        test('should apply the provided silent option and use the default space, limit, and EOL option', () => {
             const path = './foo/test.json';
             const property = 'foo';
             const newValue = 'bar';
@@ -123,7 +129,28 @@ describe('replace-json-property', () => {
                 {
                     spaces: 2,
                     EOL: '\n',
-                    silent: true
+                    silent: true,
+                    limit: 0
+                }
+            );
+        });
+
+        test('should apply the provided limit option and use the default space, silent, and EOL option', () => {
+            const path = './foo/test.json';
+            const limit = 2;
+            const property = 'foo';
+            const newValue = 'bar';
+            const options = { limit };
+
+            sut.replace(path, property, newValue, options);
+            expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
+                expect.anything(),
+                undefined,
+                {
+                    spaces: 2,
+                    EOL: '\n',
+                    silent: false,
+                    limit
                 }
             );
         });

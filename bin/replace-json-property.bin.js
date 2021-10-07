@@ -15,11 +15,16 @@ commander
         'Add the line ending the file should be written with, for example "\\r\\n"'
     )
     .option('--silent [boolean]', 'Silent mode. Executes without log messages')
+    .option(
+        '--limit [number]',
+        'Limit the maximum number of replacements, for example (1, 4)'
+    )
     .action(function(path, property, value) {
         replaceJsonProperty.replace(path, property, value, {
             spaces: commander.spaces,
             EOL: commander.eol,
-            silent: commander.silent
+            silent: commander.silent,
+            limit: commander.limit
         });
     })
     .parse(process.argv);
