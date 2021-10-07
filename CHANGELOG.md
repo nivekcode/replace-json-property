@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/kreuzerk/replace-json-property/compare/v1.7.1...v1.8.0) (2021-10-07)
+
+
+### Features
+
+* **limiter:** add ability to limit number of value replacements ([42bae44](https://github.com/kreuzerk/replace-json-property/commit/42bae44c734df498d500081dec57b9bacf18a6d8))
+
 ## [1.7.1](https://github.com/kreuzerk/replace-json-property/compare/v1.7.0...v1.7.1) (2021-09-06)
 
 
