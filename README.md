@@ -97,12 +97,13 @@ You can also use the replace function in your JavaScript code.
 
 The following flags allow you to configure how the resulting file is written.
 
-| Option | Description | Default |
-| ------------- | ------------- |-----|
-| -s or --spaces  | Add the spaces the file should be written with, for example (2, 4) | 2|
-| -e or --eol  | Add the line ending the file should be written with, for example "\r\n" | "\n"|
-| --silent | Silent mode. Executes without log messages | False |
-| --limit | Limit the number of replacements | 0 (unlimited) |
+| Option         | Description                                                             | Default       |
+|----------------|-------------------------------------------------------------------------|---------------|
+| -s or --spaces | Add the spaces the file should be written with, for example (2, 4)      | 2             |
+| -e or --eol    | Add the line ending the file should be written with, for example "\r\n" | "\n"          |
+| --silent       | Silent mode. Executes without log messages                              | False         |
+| --limit        | Limit the number of replacements                                        | 0 (unlimited) |
+| --add          | When set to true propertys that do not exist will be added              | false         |
 
 ## Help command
 

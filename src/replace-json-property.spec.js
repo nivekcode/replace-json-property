@@ -10,6 +10,10 @@ describe('replace-json-property', () => {
         log.error = jest.fn();
     });
 
+    afterEach(() => {
+        jest.resetAllMocks();
+    });
+
     describe('Replace', () => {
         const extractReviver = jestFunction =>
             jestFunction.mock.calls[0][1].reviver;
@@ -49,9 +53,31 @@ describe('replace-json-property', () => {
 
         test('should log an error message if something went wrong', () => {
             const throwError = true;
-            jsonfile.setup({}, throwError);
+            jsonfile.readFileSync = jest.fn(() => {
+                throw 'Something went wrong';
+            });
             sut.replace('somepath', 'foo', 'bar', {});
             expect(log.error).toHaveBeenCalled();
+        });
+    });
+
+    describe('add keys', () => {
+        test('should add the property if the property does not exist and the add option is enabled', () => {
+            sut.replace('some-path', 'foo', 'bar', { add: true });
+            expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
+                expect.anything(),
+                expect.objectContaining({ foo: 'bar' }),
+                expect.anything()
+            );
+        });
+
+        test('should not add the property if the property does not exist and the add option is enabled', () => {
+            sut.replace('some-path', 'foo', 'bar', { add: false });
+            expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
+                expect.anything(),
+                expect.objectContaining({}),
+                expect.anything()
+            );
         });
     });
 
@@ -69,7 +95,7 @@ describe('replace-json-property', () => {
             sut.replace(path, property, newValue, options);
             expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
                 expect.anything(),
-                undefined,
+                expect.anything(),
                 {
                     spaces: 4,
                     EOL: '\n',
@@ -87,7 +113,7 @@ describe('replace-json-property', () => {
             sut.replace(path, property, newValue);
             expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
                 expect.anything(),
-                undefined,
+                expect.anything(),
                 {
                     spaces: 2,
                     EOL: '\n',
@@ -106,7 +132,7 @@ describe('replace-json-property', () => {
             sut.replace(path, property, newValue, options);
             expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
                 expect.anything(),
-                undefined,
+                expect.anything(),
                 {
                     spaces: 2,
                     EOL: '\n\r',
@@ -125,7 +151,7 @@ describe('replace-json-property', () => {
             sut.replace(path, property, newValue, options);
             expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
                 expect.anything(),
-                undefined,
+                expect.anything(),
                 {
                     spaces: 2,
                     EOL: '\n',
@@ -145,7 +171,7 @@ describe('replace-json-property', () => {
             sut.replace(path, property, newValue, options);
             expect(jsonfile.writeFileSync).toHaveBeenCalledWith(
                 expect.anything(),
-                undefined,
+                expect.anything(),
                 {
                     spaces: 2,
                     EOL: '\n',
