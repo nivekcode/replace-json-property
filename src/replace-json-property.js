@@ -15,10 +15,14 @@ const replace = (path, property, newValue, options = {}) => {
             : DEFAULT_OPTIONS.spaces,
         EOL: (options && options.EOL) || DEFAULT_OPTIONS.EOL,
         silent: (options && options.silent) || DEFAULT_OPTIONS.SILENT,
-        limit: parseInt((options && options.limit) || DEFAULT_OPTIONS.LIMIT, 10)
+        limit: parseInt(
+            (options && options.limit) || DEFAULT_OPTIONS.LIMIT,
+            10
+        ),
+        add: options && options.add
     };
     try {
-        const file = readFile(path, property, newValue, options.limit);
+        const file = updateFile(path, property, newValue, options);
         jsonfile.writeFileSync(path, file, options);
         if (!options.silent) {
             log.success(
@@ -30,20 +34,30 @@ const replace = (path, property, newValue, options = {}) => {
     }
 };
 
-const readFile = (path, property, newValue, limit) => {
+const updateFile = (path, property, newValue, options) => {
+    const { limit, add } = options;
+
     let limitCounter = 0;
-    return jsonfile.readFileSync(path, {
-        reviver: (key, value) => {
-            if (key === property) {
-                if (limit > 0 && limitCounter >= limit) {
-                    return value;
+    let propertyExists = false;
+    const revivedJson =
+        jsonfile.readFileSync(path, {
+            reviver: (key, value) => {
+                if (key === property) {
+                    propertyExists = true;
+                    if (limit > 0 && limitCounter >= limit) {
+                        return value;
+                    }
+                    ++limitCounter;
+                    return newValue;
                 }
-                ++limitCounter;
-                return newValue;
+                return value;
             }
-            return value;
-        }
-    });
+        }) || {};
+
+    if (!propertyExists && add) {
+        revivedJson[property] = newValue;
+    }
+    return revivedJson;
 };
 
 module.exports = {

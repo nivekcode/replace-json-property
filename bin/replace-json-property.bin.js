@@ -19,12 +19,17 @@ commander
         '--limit [number]',
         'Limit the maximum number of replacements, for example (1, 4)'
     )
+    .option(
+        '-a --add [number]',
+        'Add the property if it does not exist in the JSON (default: false)'
+    )
     .action(function(path, property, value) {
         replaceJsonProperty.replace(path, property, value, {
             spaces: commander.spaces,
             EOL: commander.eol,
             silent: commander.silent,
-            limit: commander.limit
+            limit: commander.limit,
+            add: commander.add
         });
     })
     .parse(process.argv);
