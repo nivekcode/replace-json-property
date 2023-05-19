@@ -1,0 +1,28 @@
+name: release
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+      - name: Install Node & NPM
+        uses: actions/setup-node@v3
+      - name: Install node_modules
+        run: npm install
+      - name: Test
+        run: npm run test
+      - name: Report coverage
+        uses: codecov/codecov-action@v3.1.4
+      - name: Build
+        run: npm run build
+      - name: Release
+        uses: cycjimmy/semantic-release-action@v3
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
