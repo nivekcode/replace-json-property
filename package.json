@@ -3,6 +3,9 @@
   "version": "1.4.4",
   "description": "CLI tool to replace a property in a JSON file",
   "main": "src/replace-json-property.js",
+  "release": {
+    "branches": ["main"]
+  },
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged",
