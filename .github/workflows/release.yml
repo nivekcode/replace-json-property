@@ -16,9 +16,11 @@ jobs:
       - name: Install node_modules
         run: npm install
       - name: Test
-        run: npm run test
+        run: npm run test:coverage
       - name: Report coverage
         uses: codecov/codecov-action@v3.1.4
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
       - name: Build
         run: npm run build
       - name: Release
